@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ビンゴシート</title>
+  <link rel="stylesheet" href="../../css/sheet.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../../js/sheet.js"></script>
+  <meta name="viewport" content="width=device-wisth,initial-scale=1">
+</head>
+
+<body>
+  <div class="login">
+    <h1>...Please wait</h1>
+    <div id="info"></div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+  <script src="../../js/config.js"></script>
+  
+  <script>
+  firebase.auth().onAuthStateChanged((user) => {
+  let h1 = document.querySelector('h1');
+  let info = document.querySelector('#info');
+  
+  if (user) {
+  h1.innerText = 'Login Complete!';
+  info.innerHTML = `${user.displayName}さんがログインしました<br>`;
+  console.log(user);
+  }
+  else {
+  h1.innerText = 'Not Login';
+  }
+  });
+  </script>
+
+  <div>
+    <h1 id="result"></h1>
+  </div>
+  <div>
+    <table id="bingo" cellspacing="10">
+      <tbody>
+        <tr>
+          <th>B</th>
+          <th>I</th>
+          <th>N</th>
+          <th>G</th>
+          <th>O</th>
+        </tr>
+        <tr>
+          <td class="boolean" id="bi0"></td>
+          <td class="boolean" id="bi1"></td>
+          <td class="boolean" id="bi2"></td>
+          <td class="boolean" id="bi3"></td>
+          <td class="boolean" id="bi4"></td>
+        </tr>
+        <tr>
+          <td class="boolean" id="bi5"></td>
+          <td class="boolean" id="bi6"></td>
+          <td class="boolean" id="bi7"></td>
+          <td class="boolean" id="bi8"></td>
+          <td class="boolean" id="bi9"></td>
+        </tr>
+        <tr>
+          <td class="boolean" id="bi10"></td>
+          <td class="boolean" id="bi11"></td>
+          <td class="boolean" id="bi12"></td>
+          <td class="boolean" id="bi13"></td>
+          <td class="boolean" id="bi14"></td>
+        </tr>
+        <tr>
+          <td class="boolean" id="bi15"></td>
+          <td class="boolean" id="bi16"></td>
+          <td class="boolean" id="bi17"></td>
+          <td class="boolean" id="bi18"></td>
+          <td class="boolean" id="bi19"></td>
+        </tr>
+        <tr>
+          <td class="boolean" id="bi20"></td>
+          <td class="boolean" id="bi21"></td>
+          <td class="boolean" id="bi22"></td>
+          <td class="boolean" id="bi23"></td>
+          <td class="boolean" id="bi24"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p id="button"><input type="button" value="カードを選びなおす" id="bingo-create"></p>
+  </div>
+  
+  
+</body>
+
+</html>
